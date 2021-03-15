@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""mixed"""
+"""Eleement"""
+from typing import List, Iterable, Tuple, Sequence
 
-from typing import Callable
 
-
-def make_multiplier(multiplier: float) -> Callable[[float], float]:
-    """sum mixed"""
-
-    return lambda x: x * multiplier
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
+    """element_length"""
+    return [(elemnt, len(elemnt)) for elemnt in lst]
