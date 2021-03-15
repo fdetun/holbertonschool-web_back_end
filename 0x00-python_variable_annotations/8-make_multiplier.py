@@ -1,6 +1,6 @@
-
 #!/usr/bin/env python3
-"""multiplier"""
+"""mixed"""
+
 from typing import Callable
 
 
