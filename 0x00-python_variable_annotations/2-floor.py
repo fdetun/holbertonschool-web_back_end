@@ -2,7 +2,7 @@
 """floor"""
 
 
-def floor(n: floar) -> int:
+def floor(n: float) -> int:
     """function that sum two floats
     args:
     float n
