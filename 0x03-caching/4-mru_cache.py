@@ -21,8 +21,8 @@ class LRUCache(BasicCaching):
                 self.cachearray.append(
                     self.cachearray.pop(self.cachearray.index(key)))
             if lenstoreD_cache > BasicCaching.MAX_ITEMS:
-                firselemt = self.cachearray[-2]
-                self.cachearray.pop(-2)
+                firselemt = self.cachearray[0]
+                self.cachearray.pop(0)
                 self.cache_data.pop(firselemt)
                 print("DISCARD: {}".format(discarded))
 
