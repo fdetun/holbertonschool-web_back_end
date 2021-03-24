@@ -3,6 +3,7 @@
 Main file
 """
 
+
 def index_range(page, page_size):
     """index_range function"""
 
