@@ -43,6 +43,7 @@ def get_logger() -> logging.Logger:
     """get logger function"""
     obj = logging.getLogger('user_data')
     obj.propagate = False
+    obj.setLevel(logging.INFO)
     ch = logging.StreamHandler()
     ch.setFormatter(RedactingFormatter(PII_FIELDS))
     obj.addHandler(ch)
