@@ -85,7 +85,7 @@ def main():
     for i in rslt:
         f = "name={}; email={}; phone={}; ssn={}; ".format(i[0], i[1], i[2])
         f += "{}; password={}; ip={}; ".format(i[3], i[4], i[5])
-        f += "last_login={row[6]}; user_agent={row[7]};".format(i[6], i[7])
+        f += "last_login={}; user_agent={};".format(i[6], i[7])
 
         Logger.info(f)
 
