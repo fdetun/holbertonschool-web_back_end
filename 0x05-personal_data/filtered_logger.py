@@ -42,7 +42,6 @@ def filter_datum(
 def get_logger() -> logging.Logger:
     """get logger function"""
     obj = logging.getLogger('user_data')
-    obj.setLevel(logging.DEBUG)
     obj.propagate = False
     ch = logging.StreamHandler()
     ch.setFormatter(RedactingFormatter(PII_FIELDS))
