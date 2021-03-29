@@ -71,5 +71,4 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     cnx = mysql.connector.connect(user=db_user, password=db_pwd,
                                   host=db_host,
                                   database=db_name)
-    print(cnx)
     return cnx
