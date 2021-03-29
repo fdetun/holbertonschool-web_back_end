@@ -52,7 +52,7 @@ def get_logger() -> logging.Logger:
     return obj
 
 
-def get_db() -> mysql.connector.connection_cext.CMySQLConnection:
+def get_db() -> mysql.connector.connection.MySQLConnection:
     """ function to connect to database
     from the env variables and retuen a mysql connector
     object
@@ -67,4 +67,5 @@ def get_db() -> mysql.connector.connection_cext.CMySQLConnection:
     cnx = mysql.connector.connect(user=db_user, password=db_pwd,
                                   host=db_host,
                                   database=db_name)
+    print(cnx)
     return cnx
