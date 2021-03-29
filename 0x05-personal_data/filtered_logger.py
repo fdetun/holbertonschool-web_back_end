@@ -52,7 +52,7 @@ def get_logger() -> logging.Logger:
     return obj
 
 
-def get_db():
+def get_db() -> mysql.connector.connection_cext.CMySQLConnection:
     """ function to connect to database
     from the env variables and retuen a mysql connector
     object
