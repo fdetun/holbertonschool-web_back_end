@@ -2,6 +2,25 @@
 """regex"""
 import re
 from typing import List
+import logging
+
+
+class RedactingFormatter(logging.Formatter):
+    """ Redacting Formatter class
+        """
+
+    REDACTION = "***"
+    FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
+    SEPARATOR = ";"
+
+    def __init__(self, fields: List[str]):
+        super(RedactingFormatter, self).__init__(self.FORMAT)
+        self.f = fields
+
+    def format(self, record: logging.LogRecord) -> str:
+        """format the record"""
+        form = logging.Formatter(self.FORMAT).format(record)
+        return filter_datum(self.f, self.REDACTION, form, self.SEPARATOR)
 
 
 def filter_datum(
