@@ -1,4 +1,10 @@
+#!/usr/bin/env python3
+"""
+auth class
+"""
 from flask import Flask, jsonify, abort, request
+from typing import List, TypeVar
+
 
 class Auth:
     """ User Auth
