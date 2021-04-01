@@ -42,7 +42,7 @@ class BasicAuth(Auth):
             return None_Tuple
         if ':' not in decoded_base64_authorization_header:
             return None_Tuple
-        cred = decoded_base64_authorization_header.split(':')
+        cred = decoded_base64_authorization_header.split(':', 1)
         return (cred[0], cred[1])
 
     def user_object_from_credentials(
