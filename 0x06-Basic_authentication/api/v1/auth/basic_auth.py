@@ -63,3 +63,12 @@ class BasicAuth(Auth):
             return None
         except BaseException:
             return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """user in session"""
+        token = self.authorization_header(request)
+        b64_token = self.extract_base64_authorization_header(token)
+        f_token = self.decode_base64_authorization_header(b64_token)
+        user = self.extract_user_credentials(f_token)
+        user_tuple = self.user_object_from_credentials(user[0], user[1])
+        return user_tuple
