@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BasicAuth class
+SessionAuth class
 """
 from typing import TypeVar
 from api.v1.auth.auth import Auth
@@ -9,5 +9,5 @@ from models.user import User
 
 
 class SessionAuth(Auth):
-    """Basic Auth that inhertis from Auth"""
+    """SessionAuth that inhertis from Auth"""
     pass
