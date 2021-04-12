@@ -22,6 +22,7 @@ elif os.getenv("AUTH_TYPE") == "basic_auth":
 elif os.getenv("AUTH_TYPE") == "session_auth":
     auth = SessionAuth()
 
+
 @app.errorhandler(404)
 def not_found(error) -> str:
     """ Not found handler
@@ -43,6 +44,7 @@ def beforereq():
     if auth.current_user(request) is None:
         return jsonify({"error": "Forbidden"}), 403
     request.current_user = auth.current_user(request)
+
 
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
