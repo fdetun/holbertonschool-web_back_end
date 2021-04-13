@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
+"""
+user file
+"""
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
+
 
 class User(Base):
     __tablename__ = 'users'
