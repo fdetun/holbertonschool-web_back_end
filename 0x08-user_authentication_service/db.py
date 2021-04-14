@@ -52,9 +52,8 @@ class DB:
 
     def update_user(self, user_id: int, **ards) -> None:
         """update_user methode"""
-        self.find_user_by(user_id)
         try:
-            a = self._session.query(User).filter(
+            self._session.query(User).filter(
                 User.id == user_id).update(ards)
         except BaseException:
             raise ValueError
