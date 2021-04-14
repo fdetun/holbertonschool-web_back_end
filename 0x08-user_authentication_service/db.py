@@ -5,6 +5,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from sqlalchemy.exc import InvalidRequestError
+from sqlalchemy.orm.exc import NoResultFound
+
 
 from user import Base
 from user import User
@@ -39,3 +42,10 @@ class DB:
         self._session.add(User_obj)
         self._session.commit()
         return User_obj
+
+    def find_user_by(self, **args):
+        """find User args"""
+        user_obj = self._session.query(User).filter_by(**args).first()
+        if user_obj is None:
+            raise NoResultFound
+        return user_obj
