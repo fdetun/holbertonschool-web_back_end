@@ -43,7 +43,7 @@ class DB:
         self._session.commit()
         return User_obj
 
-    def find_user_by(self, **args)-> User:
+    def find_user_by(self, **args) -> User:
         """find User args"""
         user_obj = self._session.query(User).filter_by(**args).first()
         if user_obj is None:
