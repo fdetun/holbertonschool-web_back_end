@@ -47,7 +47,6 @@ class DB:
         """find User args"""
         if args is None:
             raise InvalidRequestError
-
         user_obj = self._session.query(User).filter_by(**args).first()
         if user_obj is None:
             raise NoResultFound
