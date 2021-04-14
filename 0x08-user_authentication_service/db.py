@@ -45,13 +45,16 @@ class DB:
 
     def find_user_by(self, **args) -> User:
         """find User args"""
-        user_obj = self._session.query(User).filter_by(**args).first()
+        if args is None:
+            raise InvalidRequestError
+        user_obj = self._session.query(User).filter_by(args).first()
         if user_obj is None:
             raise NoResultFound
         return user_obj
 
     def update_user(self, user_id: int, **ards) -> None:
         """update_user methode"""
+        self.find_user_by(id=user_id)
         try:
             self._session.query(User).filter(
                 User.id == user_id).update(ards)
