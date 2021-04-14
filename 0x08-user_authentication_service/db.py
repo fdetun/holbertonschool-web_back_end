@@ -54,6 +54,6 @@ class DB:
         """update_user methode"""
         try:
             self._session.query(User).filter(
-                User.id == user_id).update(**ards)
+                User.id == user_id).update(ards)
         except BaseException:
             raise ValueError
