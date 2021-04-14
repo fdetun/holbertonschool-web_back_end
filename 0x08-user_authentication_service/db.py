@@ -52,10 +52,9 @@ class DB:
 
     def update_user(self, user_id: int, **ards) -> None:
         """update_user methode"""
-        obj = self.find_user_by(id=user_id)
-        for key, valeur in ards.items():
-            if valeur not in obj.__dict__:
-                raise ValueError
-            else:
-                setattr(obj, key, valeur)
-        self._session.commit()
+        self.find_user_by(user_id)
+        try:
+            a = self._session.query(User).filter(
+                User.id == user_id).update(ards)
+        except BaseException:
+            raise ValueError
