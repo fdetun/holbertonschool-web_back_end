@@ -52,10 +52,10 @@ class DB:
 
     def update_user(self, user_id: int, **ards) -> None:
         """update_user methode"""
-        USerOBj = self.find_user_by(id=user_id)
-        for key, values in ards.items():
-            if key in USerOBj.__dict__:
-                setattr(USerOBj, key, values)
-            else:
+        obj = self.find_user_by(id=user_id)
+        for key, valeur in ards.items():
+            if valeur not in obj.__dict__:
                 raise ValueError
+            else:
+                setattr(obj, key, valeur)
         self._session.commit()
