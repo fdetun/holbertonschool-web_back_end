@@ -49,3 +49,10 @@ class DB:
         if user_obj is None:
             raise NoResultFound
         return user_obj
+
+    def update_user(self, user_id: int, **ards) -> None:
+        """update_user methode"""
+        a = self._session.query(User).filter(User.id == user_id).update(ards)
+        if a is None:
+            raise ValueError
+        return a
