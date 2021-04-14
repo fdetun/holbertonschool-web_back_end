@@ -58,3 +58,4 @@ class DB:
                 setattr(USerOBj, key, values)
             else:
                 raise ValueError
+        self._session.commit()
