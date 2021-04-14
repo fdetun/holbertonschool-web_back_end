@@ -52,9 +52,11 @@ class DB:
 
     def update_user(self, user_id: int, **ards) -> None:
         """update_user methode"""
-        a = self._session.query(User).filter(User.id == user_id).update(ards)
+        try:
+            a = self._session.query(User).filter(
+                User.id == user_id).update(ards)
+        except BaseException:
+            raise ValueError
         if a == 0:
             raise NoResultFound
-        if a is None:
-            raise ValueError
         return a
