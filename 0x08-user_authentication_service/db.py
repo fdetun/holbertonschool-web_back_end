@@ -55,8 +55,8 @@ class DB:
         try:
             a = self._session.query(User).filter(
                 User.id == user_id).update(ards)
-            if a == 0:
-                raise NoResultFound
         except BaseException:
             raise ValueError
+        if a == 0:
+            raise NoResultFound
         return a
