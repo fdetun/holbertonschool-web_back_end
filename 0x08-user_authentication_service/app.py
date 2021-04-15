@@ -45,11 +45,11 @@ def deletesession():
     """delete session"""
     session = request.cookies.get("session_id")
     Obj = AUTH.get_user_from_session_id(session)
-    if Obj:
+    if not Obj:
+        abort(403)
+    else:
         AUTH.destroy_session(Obj.id)
         return redirect('/')
-    else:
-        abort(403)
 
 
 if __name__ == '__main__':
