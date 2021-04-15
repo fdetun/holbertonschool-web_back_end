@@ -66,6 +66,7 @@ class Auth:
             self._db.update_user(user_id, session_id=None)
         except Exception:
             pass
+        return None
 
     def get_user_from_session_id(self, session_id: str) -> User:
         """ data gathering of user"""
