@@ -48,3 +48,14 @@ class Auth:
                 errors='strict'), obj.hashed_password)
         except NoResultFound:
             return False
+
+    def create_session(self, email: str) -> str:
+        """ create session method"""
+        SessionId = None
+        try:
+            user = self._db.find_user_by(email=email)
+            SessionId = _generate_uuid()
+            self._db.update_user(user.id, session_id=SessionId)
+        except NoResultFound:
+            pass
+        return SessionId
