@@ -45,7 +45,7 @@ class DB:
 
     def find_user_by(self, **args) -> User:
         """find User args"""
-        user_obj = self._session.query(User).filter_by(args).first()
+        user_obj = self._session.query(User).filter_by(**args).first()
         if user_obj is None:
             raise NoResultFound
         return user_obj
@@ -54,6 +54,6 @@ class DB:
         """update_user methode"""
         try:
             self._session.query(User).filter(
-                User.id == user_id).update(ards)
+                User.id == user_id).update(**ards)
         except BaseException:
             raise ValueError
