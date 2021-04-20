@@ -44,3 +44,25 @@ class TestGetJson(unittest.TestCase):
         mok.return_value = payload
         resp = get_json(url)
         self.assertEqual(resp, payload)
+
+
+class TestMemoize(unittest.TestCase):
+    """Testmem Class"""
+
+    def test_memoize(self):
+        """test_memoize method"""
+        class TestClass:
+            """TestClass class"""
+
+            def a_method(self):
+                """a method function"""
+                return 42
+
+            @memoize
+            def a_property(self):
+                """method """
+                return self.a_method()
+
+        with patch.object(TestClass, "a_method") as mok:
+            fde = TestClass()
+            mok.assert_called_once
