@@ -6,7 +6,7 @@ from flask import g, request
 
 
 app = Flask(__name__)
-#app.config.from_pyfile('babel.cfg')
+# app.config.from_pyfile('babel.cfg')
 babel = Babel(app)
 
 
