@@ -16,7 +16,7 @@ class Config:
 app.config.from_object(Config)
 
 
-@app.route("/")
+@app.route('/', methods=['GET'], strict_slashes=False)
 def index():
     """route function"""
     return render_template("1-index.html")
