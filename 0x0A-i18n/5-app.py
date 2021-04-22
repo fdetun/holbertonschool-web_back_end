@@ -33,7 +33,6 @@ def before_request():
     uid = request.args.get('login_as')
     if get_user(uid):
         g.user = get_user(uid)
-        print(g.user)
 
 
 def get_user(uid):
