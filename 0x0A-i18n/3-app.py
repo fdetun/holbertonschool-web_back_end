@@ -23,7 +23,7 @@ app.config.from_object(Config)
 @babel.localeselector
 def get_locale():
     """get locale function"""
-    return request.accept_languages.best_match(Config().LANGUAGES)
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
