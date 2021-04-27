@@ -17,4 +17,4 @@ class Cache:
         """store cache methode"""
         id = str(uuid.uuid4())
         self._redis.mset({id: data})
-        return tmp
+        return id
