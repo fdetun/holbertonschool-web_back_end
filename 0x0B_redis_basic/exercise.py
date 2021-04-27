@@ -8,10 +8,9 @@ from typing import Union
 class Cache:
     """cash class"""
 
-    _redis = redis.Redis()
-
     def __init__(self):
         """initilisation funct"""
+        self._redis = redis.Redis()
         self._redis.flushdb()
 
     def store(self, data: Union[bytes, str, int, float]) -> str:
