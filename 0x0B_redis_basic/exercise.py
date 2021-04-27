@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""backend redis project"""
+"""redis backend project exercice"""
 import redis
 import uuid
-from typing import Union
+from typing import Union, Callable, Optional
 
 
 class Cache:
-    """cash class"""
+    """ the caching class"""
 
     def __init__(self):
-        """initilisation funct"""
+        """ init of cache class"""
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: Union[bytes, str, int, float]) -> str:
-        """store cache methode"""
+    def store(self, data: Union[str, bytes, int, float]) -> str:
+        """ store caching"""
         id = str(uuid.uuid4())
         self._redis.set(id, data)
         return id

@@ -5,6 +5,9 @@ Main file
 import redis
 
 Cache = __import__('exercise').Cache
+c2 = __import__('exercise')
+print(c2.__doc__)
+print(Cache.__doc__)
 
 cache = Cache()
 
