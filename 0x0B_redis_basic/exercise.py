@@ -19,9 +19,13 @@ class Cache:
         self._redis.set(id, data)
         return id
 
-    def get(self, key: str, fn: Optional[Callable] = None):
+    def get(self, key: str, fn: Optional[Callable]
+            = None) -> Union[str, bytes, int, float]:
         """get caching"""
         fde = self._redis.get(key)
         if fn is None:
             return fde
-        return fn(encodedValue)
+        elif fde is None:
+            return None
+        else:
+            return fn(fde)
