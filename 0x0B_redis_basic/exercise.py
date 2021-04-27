@@ -23,9 +23,4 @@ class Cache:
             = None) -> Union[str, bytes, int, float]:
         """get caching"""
         fde = self._redis.get(key)
-        if fn is None:
-            return fde
-        elif fde is None:
-            return None
-        else:
-            return fn(fde)
+        return fde if fn is None else fn(fde)
