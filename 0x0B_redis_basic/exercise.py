@@ -14,7 +14,14 @@ class Cache:
         self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
-        """ store caching"""
+        """store caching"""
         id = str(uuid.uuid4())
         self._redis.set(id, data)
         return id
+
+    def get(self, key: str, fn: Optional[Callable] = None):
+        """get caching"""
+        fde = self._redis.get(key)
+        if fn is None:
+            return fde
+        return fn(encodedValue)
