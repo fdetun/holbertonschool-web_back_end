@@ -1,3 +1,3 @@
 -- tasks mysql advanced
 -- third task
-select DISTINCT  origin, fans nb_fans from metal_bands ORDER BY nb_fans DESC;
+select DISTINCT  origin, SUM(fans) nb_fans from metal_bands GROUP BY origin ORDER BY nb_fans DESC;
