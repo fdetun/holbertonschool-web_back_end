@@ -50,15 +50,12 @@ export default class HolbertonCourse {
   set students(value) {
     /*eslint-disable */
 
-        if (typeof value !== 'object') {
-            throw new TypeError('Students must be an array of strings');
-        } else {
-            for (const i in value) {
-                if (typeof i !== 'string') {
-                    throw new TypeError('Students must be an array of strings');
-                }
-                this._students = value;
+        for (const i in value) {
+            if (typeof i !== 'string') {
+                throw new TypeError('Students must be an array of strings');
             }
+            this._students = value;
         }
+
     }
 }
