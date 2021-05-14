@@ -7,9 +7,14 @@ export default class HolbertonCourse {
       throw TypeError('Length must be a number');
     }
 
-    for (const i in students) {
-      if (typeof i !== 'string') {
-        throw new TypeError('Students must be an array of strings');
+    if (typeof students !== 'object') {
+      throw new TypeError('Students must be an array of strings');
+    }
+    if (typeof students === 'object') {
+      for (const i in students) {
+        if (typeof i !== 'string') {
+          throw new TypeError('Students must be an array of strings');
+        }
       }
     }
 
@@ -50,12 +55,15 @@ export default class HolbertonCourse {
   set students(value) {
     /*eslint-disable */
 
-        for (const i in value) {
-            if (typeof i !== 'string') {
-                throw new TypeError('Students must be an array of strings');
+        if (typeof value !== 'object') {
+            throw new TypeError('Students must be an array of strings');
+        } else {
+            for (const i in value) {
+                if (typeof i !== 'string') {
+                    throw new TypeError('Students must be an array of strings');
+                }
+                this._students = value;
             }
-            this._students = value;
         }
-
     }
 }
