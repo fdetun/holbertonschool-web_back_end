@@ -4,7 +4,7 @@ export default function cleanSet(set, startString) {
     return '';
   }
   for (const i of set) {
-    if (i.startsWith(startString)) rslt.push(i.replace(startString, ''));
+    if (typeof i === 'string' && i.startsWith(startString)) rslt.push(i.replace(startString, ''));
   }
   return rslt.join('-');
 }
