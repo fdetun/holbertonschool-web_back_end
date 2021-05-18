@@ -3,4 +3,4 @@ import getStudentsByLocation from "./2-get_students_by_loc.js";
 
 const students = getListStudents();
 
-console.log(getStudentsByLocation(students, 'Sa'));
+console.log(getStudentsByLocation(students, "Columbia"));
