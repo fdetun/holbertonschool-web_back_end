@@ -4,5 +4,5 @@ const app = http.createServer((req, rep) => {
   rep.end('Hello Holberton School!');
 });
 
-app.listen('127.0.0.1', 1245);
+app.listen(1245, '127.0.0.1');
 module.exports = app;
