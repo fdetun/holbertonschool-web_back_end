@@ -1,12 +1,12 @@
 const fs = require('fs');
 
 async function countStudents(fp) {
-    try {
-        const myfile = await fs.promises.readFile(fp, { encoding: 'utf8' });
-        const arr = myfile.trim().split('\n');
-        const fields = {};
-        const lis = {};
-        /* eslint-disable */
+  try {
+    const myfile = await fs.promises.readFile(fp, { encoding: 'utf8' });
+    const arr = myfile.trim().split('\n');
+    const fields = {};
+    const lis = {};
+    /* eslint-disable */
 
         for (let i = 1; i < arr.length; i += 1) {
             const f = arr[i].split(',');
