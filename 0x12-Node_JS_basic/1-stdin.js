@@ -4,9 +4,9 @@ const f = require('readline').createInterface({
 
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 f.question('readable', (name) => {
-  if (name) process.stdout.write(`Your name is: ${name}`);
+  if (name) process.stdout.write(`Your name is: ${name}\n`);
   if (!process.stdin.isTTY) {
-    process.stdout.write('This important software is now closing\n');
+    process.stdout.write('This important software is now closing');
   }
   f.close();
 });
