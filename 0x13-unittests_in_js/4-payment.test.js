@@ -1,4 +1,4 @@
-const sendPaymentRequestToApiSPTA = require('./3-payment.js');
+const sendPaymentRequestToApi = require('./3-payment.js');
 const Util = require('./utils');
 const assert = require('assert');
 const sinn = require('sinon');
