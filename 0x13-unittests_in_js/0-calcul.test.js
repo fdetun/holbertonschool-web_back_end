@@ -21,6 +21,9 @@ describe("calculate number testing", () => {
     it('tes6', function() {
         assert.strictEqual(calculateNumber(5.9, 2.1), 8);
     })
+    it('check7', function() {
+        assert.ok(!(calculateNumber()));
+    });
 
 
 });
