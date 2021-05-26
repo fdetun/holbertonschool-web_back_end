@@ -10,10 +10,10 @@ describe("calculate number testing", () => {
         assert.ok(!(calculateNumber(0, 0)));
     });
     it('test3', function() {
-        assert.ok(!(calculateNumber("str", 100, 2.9)));
+        assert.ok(!(calculateNumber("f", 1009, 2.9)));
     });
     it('test4', function() {
-        assert.ok(!(calculateNumber({}, "str")));
+        assert.ok(!(calculateNumber({}, "f")));
     });
     it('tes5', function() {
         assert.strictEqual(calculateNumber(-1, 9), 8);
