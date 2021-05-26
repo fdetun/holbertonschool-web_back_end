@@ -15,5 +15,12 @@ describe("calculate number testing", () => {
     it('test4', function() {
         assert.ok(!(calculateNumber({}, "str")));
     });
+    it('tes5', function() {
+        assert.strictEqual(calculateNumber(-1, 9), 8);
+    })
+    it('tes6', function() {
+        assert.strictEqual(calculateNumber(5.9, 2.1), 8);
+    })
+
 
 });
