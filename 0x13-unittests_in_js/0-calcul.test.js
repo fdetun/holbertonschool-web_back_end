@@ -2,9 +2,11 @@ const calculateNumber = require("./0-calcul");
 const assert = require('assert');
 
 describe("calculate number testing", () => {
-
+    it('test0', function() {
+        assert.strictEqual(calculateNumber(1.9, 2.9), 5);
+    });
     it('test1', function() {
-        assert.strictEqual(calculateNumber(4, 2.8), 7);
+        assert.strictEqual(calculateNumber(1, 2.9), 4);
     });
     it('test2', function() {
         assert.ok(!(calculateNumber(0, 0)));
