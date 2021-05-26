@@ -27,6 +27,10 @@ describe("calculate number testing", () => {
     })
     it('check7', function() {
         assert.ok(!(calculateNumber()));
+        assert.strictEqual(calculateNumber(0.2, 0.7), 1);
+        assert.strictEqual(calculateNumber(1.5, 4.9), 7);
+        assert.strictEqual(calculateNumber(3.6, 2), 6);
+        assert.strictEqual(calculateNumber(10.9, 10.1), 21);
     });
 
 });
