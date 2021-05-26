@@ -1,16 +1,16 @@
-const sendPaymentRequestToApi = require('./3-payment.js');
+const SPTA = require('./3-payment.js');
 const Util = require('./utils');
 const assert = require('assert');
-const sinon = require('sinon');
+const sinn = require('sinon');
 
 describe('test with spy', function() {
     it('check0', function() {
-        const c = sinon.spy(console, 'log');
-        const a = sinon.stub(Util, 'calculateNumber').returns(10);
-        sendPaymentRequestToApi(100, 20);
+        const c = sinn.spy(console, 'log');
+        const a = sinn.stub(Util, 'calculateNumber').returns(10);
+        SPTA(100, 20);
         assert.ok(a.calledWithExactly('SUM', 100, 20), true);
         assert.ok(c.calledWithExactly("The total is: 10"), true);
         a.restore();
-        c.restore
+        c.restore();
     });
 });
