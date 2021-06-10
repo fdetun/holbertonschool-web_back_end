@@ -12,21 +12,21 @@ def ctr(method: Callable) -> Callable:
     """req trakker"""
 
     @wraps(method)
-    def calback(url):
+    def calback(link):
         """calback func"""
-        redis_object.incr("count:{}".format(url))
-        c = redis_object.get("cached:{}".format(url))
+        redis_object.incr("count:{}".format(link))
+        c = redis_object.get("cached:{}".format(link))
         if c:
             return c.decode()
-        html = method(url)
-        redis_object.setex("cached:{}".format(url), 10, html)
-        return html
+        f = method(link)
+        redis_object.setex("cached:{}".format(link), 10, f)
+        return f
 
     return calback
 
 
 @count_req
 def get_page(url: str) -> str:
-    """get page"""
-    req = requests.get(url)
-    return req.text
+    """get_page"""
+    request = requests.get(url)
+    return request.text
