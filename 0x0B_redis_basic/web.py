@@ -12,7 +12,7 @@ def ctr(method: Callable) -> Callable:
     """req trakker"""
 
     @wraps(method)
-    def wrapper(url):
+    def fde(url):
         k = "cached:" + url
         cached_data = redis_object.get(k)
         if cached_data:
@@ -23,7 +23,7 @@ def ctr(method: Callable) -> Callable:
         redis_object.set(k, a)
         redis_object.expire(k, 10)
         return a
-    return wrapper
+    return fde
 
 
 @count_req
