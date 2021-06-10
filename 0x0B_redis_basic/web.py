@@ -8,22 +8,21 @@ from functools import wraps
 redis_object = redis.Redis()
 
 
-def ctr(method: Callable) -> Callable:
-    """req trakker"""
+def count_req(method: Callable) -> Callable:
+    """counr request"""
 
     @wraps(method)
-    def fde(url):
-        k = "cached:" + url
-        cached_data = redis_object.get(k)
-        if cached_data:
-            return cached_data.decode()
-        ck = "count:" + url
-        a = method(url)
-        redis_object.incr(ck)
-        redis_object.set(k, a)
-        redis_object.expire(k, 10)
-        return a
-    return fde
+    def wrapper(link):
+        """call back func"""
+        redis_object.incr("count:{}".format(link))
+        ch = redis_object.get("cached:{}".format(link))
+        if ch:
+            return ch.decode('utf-8')
+        f = method(link)
+        redis_object.setex("cached:{}".format(link), 10, f)
+        return f
+
+    return wrapper
 
 
 @count_req
