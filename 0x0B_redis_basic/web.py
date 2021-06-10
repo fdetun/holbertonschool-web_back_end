@@ -11,18 +11,19 @@ redis_object = redis.Redis()
 def ctr(method: Callable) -> Callable:
     """req trakker"""
 
-    @wraps(method)
-    def calback(link):
-        """calback func"""
-        redis_object.incr("count:{}".format(link))
-        c = redis_object.get("cached:{}".format(link))
-        if c:
-            return c.decode()
-        f = method(link)
-        redis_object.setex("cached:{}".format(link), 10, f)
-        return f
+    def cl(url):
+        k = "cached:" + url
+        cached_data = redis_object.get(k)
+        if cached_data:
+            return cached_data.decode()
+        ck = "count:" + url
+        a = method(url)
+        redis_object.incr(ck)
+        redis_object.set(k, a)
+        redis_object.expire(k, 10)
+        return a
+    return cl
 
-    return calback
 
 
 @count_req
