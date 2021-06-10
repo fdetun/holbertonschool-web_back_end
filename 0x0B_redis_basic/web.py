@@ -11,7 +11,8 @@ redis_object = redis.Redis()
 def ctr(method: Callable) -> Callable:
     """req trakker"""
 
-    def cl(url):
+    @wraps(method)
+    def wrapper(url):
         k = "cached:" + url
         cached_data = redis_object.get(k)
         if cached_data:
@@ -22,7 +23,7 @@ def ctr(method: Callable) -> Callable:
         redis_object.set(k, a)
         redis_object.expire(k, 10)
         return a
-    return cl
+    return wrapper
 
 
 @count_req
