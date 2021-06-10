@@ -10,7 +10,7 @@ BEGIN
         FROM users AS fde
         JOIN corrections as coor ON fde.id=coor.user_id
         JOIN projects AS proj ON coor.project_id=proj.id
-        GROUP BY U.id)
+        GROUP BY fde.id)
     AS f
     SET fde.average_score = f.tun
     WHERE fde.id=f.id;
