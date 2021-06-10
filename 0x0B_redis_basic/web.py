@@ -25,7 +25,6 @@ def ctr(method: Callable) -> Callable:
     return cl
 
 
-
 @count_req
 def get_page(url: str) -> str:
     """get_page"""
